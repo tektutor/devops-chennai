@@ -1,6 +1,10 @@
 - name: Demonstrate use of docker_container ansible module
   hosts: localhost
   tasks:
+    - name: Remove any existing containers
+      shell: docker ps -aq
+      ignore_errors: True 
+
     - name: Start the ubuntu container
       docker_container:
         name: "ubuntu{{item}}"
