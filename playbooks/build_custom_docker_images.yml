@@ -1,0 +1,16 @@
+- name: Build custom ubuntu and centos images to use them as Ansible Nodes
+  hosts: localhost
+  tasks:
+    - name: Build Ansible Custom Ubuntu Image
+      docker_image:
+         name: ansible-ubuntu
+         dockerfile: UbuntuDockerfile
+         path: . 
+         state: build
+
+    - name: Build Ansible Custom CentOS Image
+      docker_image:
+         name: ansible-centos
+         dockerfile: CentOSDockerfile
+         path: . 
+         state: build
